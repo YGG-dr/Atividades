@@ -18,7 +18,7 @@ def emprestar_livro(listLivros):
         if livro["status"] == "emprestado":
             print("Esse livro já foi emprestado, volte depois!")
         else:
-            livro["status"] = "emprestado":
+            livro["status"] = "emprestado"
             print(f"livro '{titulo}' foi emprestado com sucesso!")
         return
     print("Esse livro não foi encontrado.")
@@ -32,3 +32,15 @@ def devolver_livro(listLivros):
         else:
             livro['status'] = 'disponível'
             print(f"O seu livro foi devolvido com suscesso: {livro}")
+        return
+    print("Não foi possível encontrar esse livro.")
+
+def exibir_livros(listLivros):
+    if not listLivros:
+        print("\n Não há nenhum livro cadastrado ainda.\n")
+        return
+    
+    table = [[livro["titulo"], livro["autor"], livro["status"]] for livro in listLivros]
+    print("\nLista dos livros: ")
+    print(tabulate(table, headers=["Título", "Autor", "Status"], tablefmt="fancy_grid"))
+    print()
